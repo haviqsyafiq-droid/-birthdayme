@@ -23,7 +23,7 @@ export function GalaxyBackground() {
       initParticles();
     };
 
-    class Star {
+    class Particle {
       x: number;
       y: number;
       size: number;
