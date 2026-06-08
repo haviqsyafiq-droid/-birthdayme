@@ -23,7 +23,7 @@ export function GalaxyBackground() {
       initParticles();
     };
 
-    class Particle {
+    class Star {
       x: number;
       y: number;
       size: number;
@@ -32,8 +32,10 @@ export function GalaxyBackground() {
       opacity: number;
 
       constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        const w = canvas ? canvas.width : window.innerWidth;
+        const h = canvas ? canvas.height : window.innerHeight;
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
         this.size = Math.random() * 1.2 + 0.2;
         this.speedX = (Math.random() - 0.5) * 0.2;
         this.speedY = (Math.random() - 0.5) * 0.2;
@@ -44,10 +46,13 @@ export function GalaxyBackground() {
         this.x += this.speedX;
         this.y += this.speedY;
 
-        if (this.x < 0) this.x = canvas.width;
-        if (this.x > canvas.width) this.x = 0;
-        if (this.y < 0) this.y = canvas.height;
-        if (this.y > canvas.height) this.y = 0;
+        const w = canvas ? canvas.width : window.innerWidth;
+        const h = canvas ? canvas.height : window.innerHeight;
+
+        if (this.x < 0) this.x = w;
+        if (this.x > w) this.x = 0;
+        if (this.y < 0) this.y = h;
+        if (this.y > h) this.y = 0;
       }
 
       draw() {
